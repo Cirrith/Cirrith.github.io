@@ -12,8 +12,8 @@ function onChosenFileChange(evt)
 {
     var fileType = this.files[0].type;
 
-	if(fileType.indexOf('video') != -1)
-		loadFileObject(this.files[0], onVideoLoaded);
+	if (fileType.indexOf('video') != -1)
+        loadFileObject(this.files[0], onVideoLoaded);
 	else
 		console.log('Error with Video');
 }
