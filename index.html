@@ -1,6 +1,6 @@
 <body>
 <audio id="audio" src="Nostalgia.mp3"></audio>
-<input type="button" onclick="document.getElementById('fileIn').click()" value="Grab file"/>
+<input type="button" onclick="document.getElementById('fileIn').click(); start()" value="Grab file"/>
 <input type="file" id="fileIn"/>
 <div id="bar">
     <div id="P10" class="p"></div>
@@ -33,7 +33,7 @@
 
 </style>
 <script>
-    window.onload = function () {
+    function start() {
         audioCtx = new AudioContext();
         analyser = audioCtx.createAnalyser();
         source = audioCtx.createMediaElementSource(audio);
