@@ -1,5 +1,7 @@
 <body>
 <audio id="audio" src="Nostalgia.mp3"></audio>
+<input type="button" onclick="document.getElementById('fileIn').click()" value="Grab file"/>
+<input type="file" id="fileIn"/>
 <div id="bar">
     <div id="P10" class="p"></div>
     <div id="P20" class="p"></div>
@@ -52,7 +54,7 @@
             P70.style.height = ((frequencyData[6] * 100) / 256) + "%";
             P80.style.height = ((frequencyData[7] * 100) / 256) + "%";
             P90.style.height = ((frequencyData[8] * 100) / 256) + "%";
-			console.log(frequencyData.length);
+			console.log(document.getElementById('fileIn').value);
             console.log(frequencyData)
             requestAnimationFrame(renderFrame);
         }
