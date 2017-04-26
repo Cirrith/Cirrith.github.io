@@ -34,6 +34,7 @@
 </style>
 <script>
     function start() {
+		document.getElementById('audio').src = document.getElementById('fileIn').value;
         audioCtx = new AudioContext();
         analyser = audioCtx.createAnalyser();
         source = audioCtx.createMediaElementSource(audio);
