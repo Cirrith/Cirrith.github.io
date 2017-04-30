@@ -24,9 +24,9 @@ function onVideoLoaded(evt) {
 	var cxt = canvas.getContext('2d');
 	var video = document.createElement('video');
 	video.src = evt.target.result;
+	video.addEventListener('loadeddata',function(){canvas.width = video.videoWidth; canvas.height = video.videoHeight;});
 	
 	var canvasDelta = [canvas.offsetLeft, canvas.offsetTop];
-	console.log(canvasDelta);
 	
 	var audioCtx = new AudioContext();
     var analyser = audioCtx.createAnalyser();
@@ -37,9 +37,9 @@ function onVideoLoaded(evt) {
 	video.pause();
 	video.play();
 	
-	canvas.width = 1280;
-	canvas.height = 720;
-	video.control = true;
+	//canvas.width = 1280;
+	//canvas.height = 720;
+	//video.control = true;
 	
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 	
@@ -79,7 +79,6 @@ function onVideoLoaded(evt) {
 		for(var i = 0; i < 16; i++) {
 			cxt.fillRect(delta*i,0,delta*.8,-frequencyData[i]*lineLength/500);
 		}
-		console.log(frequencyData);
 		requestAnimationFrame(renderFrame);
 		cxt.restore();
 	}
