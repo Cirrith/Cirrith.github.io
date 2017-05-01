@@ -37,10 +37,6 @@ function onVideoLoaded(evt) {
 	video.pause();
 	video.play();
 	
-	//canvas.width = 1280;
-	//canvas.height = 720;
-	//video.control = true;
-	
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 	
 	var first = true;
