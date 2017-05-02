@@ -1,9 +1,15 @@
 "use strict"
 function byId(e){return document.getElementById(e);}
 
+var red, green, blue, alpha;
+
 function onDocLoaded()
 {
     byId('fileInput').addEventListener('change', onChosenFileChange, false);
+	red = byId('r');
+	green = byId('g');
+	blue = byId('b');
+	alpha = byId('alpha');
 }
 
 function onChosenFileChange(evt)
@@ -58,6 +64,7 @@ function onVideoLoaded(evt) {
 		cxt.stroke();
 		
 		cxt.save();
+		cxt.globalAlpha = alpha.value/100;
 		var slope = 0;
 		if(point1[0] <= point2[0]) {
 			slope = (point2[1]-point1[1])/(point2[0]-point1[0]);
@@ -71,6 +78,7 @@ function onVideoLoaded(evt) {
 		cxt.rotate(angle);
 		
 		cxt.fillStyle = "white";
+		cxt.fillStyle = 'rgb(' + red.value + ',' + green.value + ',' + blue.value + ')';
 		var delta = lineLength/16;
 		for(var i = 0; i < 16; i++) {
 			cxt.fillRect(delta*i,0,delta*.8,-frequencyData[i]*lineLength/500);
@@ -97,7 +105,6 @@ function onVideoLoaded(evt) {
 	
 	canvas.addEventListener('click',canvasClick);
 	renderFrame();
-	
 }
 
 window.addEventListener('load', onDocLoaded, false);
