@@ -30,6 +30,7 @@ function onVideoLoaded(evt) {
 	var cxt = canvas.getContext('2d');
 	var video = document.createElement('video');
 	video.src = evt.target.result;
+	// Video doesn't have data until a while after setting the source
 	video.addEventListener('loadeddata',function(){canvas.width = video.videoWidth; canvas.height = video.videoHeight;});
 	
 	var canvasDelta = [canvas.offsetLeft, canvas.offsetTop];
@@ -63,6 +64,7 @@ function onVideoLoaded(evt) {
 		cxt.lineTo(point2[0],point2[1]);
 		cxt.stroke();
 		
+		// Draw Bars
 		cxt.save();
 		cxt.globalAlpha = alpha.value/100;
 		var slope = 0;
@@ -87,6 +89,7 @@ function onVideoLoaded(evt) {
 		cxt.restore();
 	}
 	
+	// Change points on canvas clicks
 	function canvasClick(evt) {
 		var x = evt.pageX-canvasDelta[0];
 		var y = evt.pageY-canvasDelta[1];
